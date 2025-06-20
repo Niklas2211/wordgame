@@ -4,18 +4,24 @@ const words = JSON.parse(fs.readFileSync(__dirname + '/words.json', 'utf8'));
 const lobbies = {}; // { lobbyId: { players: [], readyCount: 0, gameStarted: false } }
 
 function handleJoin(socket, io) {
-  let lobbyId = 'main'; // Nur eine Lobby (für Startversion)
-
+  let lobbyId = 'main';
   if (!lobbies[lobbyId]) {
     lobbies[lobbyId] = { players: [], readyCount: 0, gameStarted: false };
   }
 
-  const player = { id: socket.id, ready: false };
+  // Spieler initial ohne Nickname
+  const player = { id: socket.id, nickname: null, ready: false };
   lobbies[lobbyId].players.push(player);
 
-  io.emit('lobbyUpdate', lobbies[lobbyId].players.length);
+  // Erster Lobby-Update mit Spielern (noch ohne Nicknames)
+  io.emit('lobbyUpdate', lobbies[lobbyId].players);
 
-  // Spieler klickt "Bereit"
+  // Nickname empfangen
+  socket.on('setNickname', (nickname) => {
+    player.nickname = nickname;
+    io.emit('lobbyUpdate', lobbies[lobbyId].players);
+  });
+
   socket.on('playerReady', () => {
     player.ready = true;
     lobbies[lobbyId].readyCount++;
@@ -23,27 +29,27 @@ function handleJoin(socket, io) {
     if (lobbies[lobbyId].readyCount === lobbies[lobbyId].players.length) {
       startGame(lobbyId, io);
     }
+    io.emit('lobbyUpdate', lobbies[lobbyId].players);
+
   });
 
   socket.on('disconnect', () => {
     lobbies[lobbyId].players = lobbies[lobbyId].players.filter(p => p.id !== socket.id);
     lobbies[lobbyId].readyCount = lobbies[lobbyId].players.filter(p => p.ready).length;
-    io.emit('lobbyUpdate', lobbies[lobbyId].players.length);
+    io.emit('lobbyUpdate', lobbies[lobbyId].players);
   });
-
+  
   socket.on('restartLobby', () => {
   const lobby = lobbies[lobbyId];
   if (!lobby) return;
 
-  // Lobby zurücksetzen
   lobby.players.forEach(p => p.ready = false);
   lobby.readyCount = 0;
   lobby.gameStarted = false;
 
-  // Eventuell neue Spieler nicht kicken – Spieler bleiben verbunden
+  io.emit('lobbyUpdate', lobby.players);
   io.emit('lobbyRestarted');
-  io.emit('lobbyUpdate', lobby.players.length);
-  });
+});
 }
 
 function startGame(lobbyId, io) {

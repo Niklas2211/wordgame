@@ -1,16 +1,43 @@
 <!DOCTYPE html>
 <html lang="de">
+<link rel="stylesheet" href="style.css" />
+
 <head>
   <meta charset="UTF-8" />
   <title>Wortratespiel Lobby</title>
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
+  <div id="nicknameModal" class="modal">
+  <div class="modal-content">
+    <h2>Willkommen! Bitte gib deinen Nickname ein:</h2>
+    <input type="text" id="nicknameInput" placeholder="Dein Nickname" />
+    <button onclick="submitNickname()">Los geht's!</button>
+  </div>
+</div>
   <h1>Wortratespiel</h1>
   <p>Spieler in der Lobby: <span id="playerCount">0</span></p>
   <ul id="playerList"></ul>
-  <button onclick="readyUp()">Bereit!</button>
-  <button onclick="restartGame()">Neustart</button>
+
+  <div id="gameCard" class="card-container hidden" onclick="flipCard()">
+      <div class="card">
+        <div class="card-face card-front">
+          <h2 id="cardTitleFront">Geheimes Wort</h2>
+          <p class="revealHint">(Klicke zum Aufdecken)</p>
+        </div>
+        <div class="card-face card-back">
+          <h2 id="cardTitleBack"></h2>
+          <p id="cardContentBack"></p>
+          <p class="revealHint">(Klicke zum Verbergen)</p>
+        </div>
+      </div>
+    </div>
+    <button class="ready-btn" onclick="readyUp()">✅ Bereit!</button>
+    <button class="restart-btn" onclick="restartGame()">🔄 Lobby zurücksetzen</button>
+
+    
+
 
 
   <script src="/socket.io/socket.io.js"></script>
