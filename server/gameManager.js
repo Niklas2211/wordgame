@@ -9,14 +9,11 @@ function handleJoin(socket, io) {
     lobbies[lobbyId] = { players: [], readyCount: 0, gameStarted: false };
   }
 
-  // Spieler initial ohne Nickname
   const player = { id: socket.id, nickname: null, ready: false };
   lobbies[lobbyId].players.push(player);
 
-  // Erster Lobby-Update mit Spielern (noch ohne Nicknames)
   io.emit('lobbyUpdate', lobbies[lobbyId].players);
 
-  // Nickname empfangen
   socket.on('setNickname', (nickname) => {
     player.nickname = nickname;
     io.emit('lobbyUpdate', lobbies[lobbyId].players);

@@ -14,12 +14,12 @@ app.use(express.static('public'));
 
 // Handle connections
 io.on('connection', (socket) => {
-  console.log('Neuer Spieler:', socket.id);
+  console.log('New Player:', socket.id);
 
-  // Spieler tritt Lobby bei
+  // Player joins Lobby
   gameManager.handleJoin(socket, io);
 });
 
 server.listen(PORT, () => {
-  console.log(`Server läuft auf Port ${PORT}`);
+  console.log(`Server running on Port ${PORT}`);
 });

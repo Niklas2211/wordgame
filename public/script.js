@@ -1,4 +1,4 @@
-const socket = io();  // nur einmal initialisieren
+const socket = io();
 
 let myNickname = null;
 
@@ -6,7 +6,7 @@ function submitNickname() {
   const input = document.getElementById('nicknameInput');
   const nickname = input.value.trim();
   if (nickname.length === 0) {
-    alert('Bitte gib einen Nickname ein!');
+    alert('Please enter your Nickname!');
     return;
   }
 
@@ -22,7 +22,7 @@ socket.on('lobbyUpdate', (players) => {
   players.forEach(player => {
     const li = document.createElement('li');
     li.classList.add('player-item');
-    li.textContent = `${player.nickname || 'Spieler'} – ${player.ready ? '✅ Bereit' : '⏳ Wartet'}`;
+    li.textContent = `${player.nickname || 'Player'} – ${player.ready ? '✅ Ready' : '⏳ Waiting'}`;
     list.appendChild(li);
   });
 
@@ -38,10 +38,10 @@ socket.on('gameStart', (data) => {
   const contentBack = document.getElementById('cardContentBack');
 
   if (data.role === 'impostor') {
-    titleBack.textContent = 'Du bist der Impostor 🤫';
-    contentBack.textContent = `Hinweis: ${data.hint}`;
+    titleBack.textContent = 'Impostor 🤫';
+    contentBack.textContent = `Hint: ${data.hint}`;
   } else {
-    titleBack.textContent = 'Dein geheimes Wort 🔐';
+    titleBack.textContent = 'Secret Word 🔐';
     contentBack.textContent = data.word;
   }
 
@@ -50,7 +50,7 @@ socket.on('gameStart', (data) => {
 });
 
 socket.on('lobbyRestarted', () => {
-  alert('Die Lobby wurde zurückgesetzt!');
+  alert('Lobby has been reset successfully!');
   document.getElementById('gameCard').classList.add('hidden');
 
 });

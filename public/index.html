@@ -4,37 +4,37 @@
 
 <head>
   <meta charset="UTF-8" />
-  <title>Wortratespiel Lobby</title>
+  <title>Wordgame Lobby</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
   <div id="nicknameModal" class="modal">
   <div class="modal-content">
-    <h2>Willkommen! Bitte gib deinen Nickname ein:</h2>
+    <h2>Welcome! Please enter your Nickname:</h2>
     <input type="text" id="nicknameInput" placeholder="Dein Nickname" />
     <button onclick="submitNickname()">Los geht's!</button>
   </div>
 </div>
-  <h1>Wortratespiel</h1>
-  <p>Spieler in der Lobby: <span id="playerCount">0</span></p>
+  <h1>Wordgame</h1>
+  <p>Player in Lobby: <span id="playerCount">0</span></p>
   <ul id="playerList"></ul>
 
   <div id="gameCard" class="card-container hidden" onclick="flipCard()">
       <div class="card">
         <div class="card-face card-front">
-          <h2 id="cardTitleFront">Geheimes Wort</h2>
-          <p class="revealHint">(Klicke zum Aufdecken)</p>
+          <h2 id="cardTitleFront">Secret Word</h2>
+          <p class="revealHint">(Click to reveal)</p>
         </div>
         <div class="card-face card-back">
           <h2 id="cardTitleBack"></h2>
           <p id="cardContentBack"></p>
-          <p class="revealHint">(Klicke zum Verbergen)</p>
+          <p class="revealHint">(Click to hide)</p>
         </div>
       </div>
     </div>
-    <button class="ready-btn" onclick="readyUp()">✅ Bereit!</button>
-    <button class="restart-btn" onclick="restartGame()">🔄 Lobby zurücksetzen</button>
+    <button class="ready-btn" onclick="readyUp()">✅ Ready!</button>
+    <button class="restart-btn" onclick="restartGame()">🔄 Lobby reset</button>
 
     
 
