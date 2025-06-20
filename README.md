@@ -16,6 +16,8 @@ A real-time multiplayer party game inspired by "Spyfall" or "Who's is the Spy?" 
 
 ## Installation
 
+´´´bash
+
 1. **Clone the repository**
 
   git clone https://github.com/Niklas2211/wordgame.git
@@ -43,6 +45,8 @@ A real-time multiplayer party game inspired by "Spyfall" or "Who's is the Spy?" 
   - Set index.js as the entry point
   - Use the environment port (process.env.PORT)
   - Everything (client + server) runs in a single deployment
+
+´´´
 
 ## How to play
 
