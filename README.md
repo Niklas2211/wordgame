@@ -17,7 +17,7 @@ A real-time multiplayer party game inspired by "Spyfall" or "Who's is the Spy?" 
 ## Installation
 
 1. **Clone the repository**
-```bash
+
 git clone https://github.com/Niklas2211/wordgame.git
 cd wordgame
 npm install
@@ -25,7 +25,7 @@ node server/index.js
 
 Open your browser at http://localhost:3000
 
-##Project Structure
+2. **Project Structure**
 
 .
 ├── public/
@@ -37,12 +37,15 @@ Open your browser at http://localhost:3000
 ├── index.js
 └── README.md
 
-##Deployment
+3. **Deployment**
 
 You can deploy this app to e.g. render.com as a Node.js Web Service
- - Set index.js as the entry point
- - Use the environment port (process.env.PORT)
-  - Everything (client + server) runs in a single deployment
+- Set index.js as the entry point
+- Use the environment port (process.env.PORT)
+- Everything (client + server) runs in a single deployment
+
+
+
 
 ## How to play
 
@@ -52,6 +55,6 @@ You can deploy this app to e.g. render.com as a Node.js Web Service
 4. The Impostor only sees a vague hint.
 5. Discuss and vote - who's pretending?
 
-##License
+## License
 
 MIT - Free to use, modify, and share. Have fun!
