@@ -30,6 +30,20 @@ function handleJoin(socket, io) {
     lobbies[lobbyId].readyCount = lobbies[lobbyId].players.filter(p => p.ready).length;
     io.emit('lobbyUpdate', lobbies[lobbyId].players.length);
   });
+
+  socket.on('restartLobby', () => {
+  const lobby = lobbies[lobbyId];
+  if (!lobby) return;
+
+  // Lobby zurücksetzen
+  lobby.players.forEach(p => p.ready = false);
+  lobby.readyCount = 0;
+  lobby.gameStarted = false;
+
+  // Eventuell neue Spieler nicht kicken – Spieler bleiben verbunden
+  io.emit('lobbyRestarted');
+  io.emit('lobbyUpdate', lobby.players.length);
+  });
 }
 
 function startGame(lobbyId, io) {

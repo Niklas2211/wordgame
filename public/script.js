@@ -12,6 +12,14 @@ socket.on('gameStart', (data) => {
   }
 });
 
+socket.on('lobbyRestarted', () => {
+  alert('Die Lobby wurde zurückgesetzt!');
+});
+
 function readyUp() {
   socket.emit('playerReady');
+}
+
+function restartGame() {
+  socket.emit('restartLobby');
 }
