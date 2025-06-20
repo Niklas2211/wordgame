@@ -16,7 +16,7 @@ A real-time multiplayer party game inspired by "Spyfall" or "Who's is the Spy?" 
 
 ## Installation
 
-´´´bash
+```bash
 
 1. **Clone the repository**
 
@@ -46,7 +46,7 @@ A real-time multiplayer party game inspired by "Spyfall" or "Who's is the Spy?" 
   - Use the environment port (process.env.PORT)
   - Everything (client + server) runs in a single deployment
 
-´´´
+```
 
 ## How to play
 
