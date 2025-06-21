@@ -1,10 +1,10 @@
-const fs = require('fs');
-const words = JSON.parse(fs.readFileSync(__dirname + '/words.json', 'utf8'));
+const fs = require("fs");
+const words = JSON.parse(fs.readFileSync(__dirname + "/words.json", "utf8"));
 
 const lobbies = {}; // { lobbyId: { players: [], readyCount: 0, gameStarted: false } }
 
 function handleJoin(socket, io) {
-  let lobbyId = 'main';
+  let lobbyId = "main";
   if (!lobbies[lobbyId]) {
     lobbies[lobbyId] = { players: [], readyCount: 0, gameStarted: false };
   }
@@ -12,41 +12,44 @@ function handleJoin(socket, io) {
   const player = { id: socket.id, nickname: null, ready: false };
   lobbies[lobbyId].players.push(player);
 
-  io.emit('lobbyUpdate', lobbies[lobbyId].players);
+  io.emit("lobbyUpdate", lobbies[lobbyId].players);
 
-  socket.on('setNickname', (nickname) => {
+  socket.on("setNickname", (nickname) => {
     player.nickname = nickname;
-    io.emit('lobbyUpdate', lobbies[lobbyId].players);
+    io.emit("lobbyUpdate", lobbies[lobbyId].players);
   });
 
-  socket.on('playerReady', () => {
+  socket.on("playerReady", () => {
     player.ready = true;
     lobbies[lobbyId].readyCount++;
 
     if (lobbies[lobbyId].readyCount === lobbies[lobbyId].players.length) {
       startGame(lobbyId, io);
     }
-    io.emit('lobbyUpdate', lobbies[lobbyId].players);
-
+    io.emit("lobbyUpdate", lobbies[lobbyId].players);
   });
 
-  socket.on('disconnect', () => {
-    lobbies[lobbyId].players = lobbies[lobbyId].players.filter(p => p.id !== socket.id);
-    lobbies[lobbyId].readyCount = lobbies[lobbyId].players.filter(p => p.ready).length;
-    io.emit('lobbyUpdate', lobbies[lobbyId].players);
+  socket.on("disconnect", () => {
+    lobbies[lobbyId].players = lobbies[lobbyId].players.filter(
+      (p) => p.id !== socket.id,
+    );
+    lobbies[lobbyId].readyCount = lobbies[lobbyId].players.filter(
+      (p) => p.ready,
+    ).length;
+    io.emit("lobbyUpdate", lobbies[lobbyId].players);
   });
-  
-  socket.on('restartLobby', () => {
-  const lobby = lobbies[lobbyId];
-  if (!lobby) return;
 
-  lobby.players.forEach(p => p.ready = false);
-  lobby.readyCount = 0;
-  lobby.gameStarted = false;
+  socket.on("restartLobby", () => {
+    const lobby = lobbies[lobbyId];
+    if (!lobby) return;
 
-  io.emit('lobbyUpdate', lobby.players);
-  io.emit('lobbyRestarted');
-});
+    lobby.players.forEach((p) => (p.ready = false));
+    lobby.readyCount = 0;
+    lobby.gameStarted = false;
+
+    io.emit("lobbyUpdate", lobby.players);
+    io.emit("lobbyRestarted");
+  });
 }
 
 function startGame(lobbyId, io) {
@@ -59,9 +62,9 @@ function startGame(lobbyId, io) {
     const socket = io.sockets.sockets.get(player.id);
     if (!socket) return;
     if (index === impostorIndex) {
-      socket.emit('gameStart', { role: 'impostor', hint: wordEntry.hint });
+      socket.emit("gameStart", { role: "impostor", hint: wordEntry.hint });
     } else {
-      socket.emit('gameStart', { role: 'normal', word: wordEntry.word });
+      socket.emit("gameStart", { role: "normal", word: wordEntry.word });
     }
   });
 

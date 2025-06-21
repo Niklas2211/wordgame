@@ -50,12 +50,12 @@ A real-time multiplayer party game inspired by "Spyfall" or "Who's is the Spy?" 
 
 ## How to play
 
-  1. Each player enters a nickname when joining the game.
-  2. Once all players press "Ready", the game starts.
-  3. Every player sees a card with the secret word - except one.
-  4. The Impostor only sees a vague hint.
-  5. Discuss and vote - who's pretending?
+1. Each player enters a nickname when joining the game.
+2. Once all players press "Ready", the game starts.
+3. Every player sees a card with the secret word - except one.
+4. The Impostor only sees a vague hint.
+5. Discuss and vote - who's pretending?
 
 ## License
 
-  MIT - Free to use, modify, and share. Have fun!
+MIT - Free to use, modify, and share. Have fun!

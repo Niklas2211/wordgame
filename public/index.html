@@ -1,26 +1,26 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
-<link rel="stylesheet" href="style.css" />
-
-<head>
-  <meta charset="UTF-8" />
-  <title>Wordgame Lobby</title>
   <link rel="stylesheet" href="style.css" />
-</head>
 
-<body>
-  <div id="nicknameModal" class="modal">
-  <div class="modal-content">
-    <h2>Welcome! Please enter your Nickname:</h2>
-    <input type="text" id="nicknameInput" placeholder="Dein Nickname" />
-    <button onclick="submitNickname()">Los geht's!</button>
-  </div>
-</div>
-  <h1>Wordgame</h1>
-  <p>Player in Lobby: <span id="playerCount">0</span></p>
-  <ul id="playerList"></ul>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Wordgame Lobby</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-  <div id="gameCard" class="card-container hidden" onclick="flipCard()">
+  <body>
+    <div id="nicknameModal" class="modal">
+      <div class="modal-content">
+        <h2>Welcome! Please enter your Nickname:</h2>
+        <input type="text" id="nicknameInput" placeholder="Dein Nickname" />
+        <button onclick="submitNickname()">Los geht's!</button>
+      </div>
+    </div>
+    <h1>Wordgame</h1>
+    <p>Player in Lobby: <span id="playerCount">0</span></p>
+    <ul id="playerList"></ul>
+
+    <div id="gameCard" class="card-container hidden" onclick="flipCard()">
       <div class="card">
         <div class="card-face card-front">
           <h2 id="cardTitleFront">Secret Word</h2>
@@ -36,11 +36,7 @@
     <button class="ready-btn" onclick="readyUp()">✅ Ready!</button>
     <button class="restart-btn" onclick="restartGame()">🔄 Lobby reset</button>
 
-    
-
-
-
-  <script src="/socket.io/socket.io.js"></script>
-  <script src="script.js"></script>
-</body>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+  </body>
 </html>
