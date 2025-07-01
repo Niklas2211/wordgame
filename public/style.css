@@ -180,10 +180,14 @@ body {
   body {
     padding: 1rem;
     font-size: 16px;
+    align-items: center;
+    justify-content: flex-start;
   }
 
   h1 {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 1rem 0;
   }
 
   .card-container {
@@ -191,31 +195,54 @@ body {
     max-width: 320px;
     height: auto;
     margin: 1rem auto;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .card {
+    width: 100%;
+    height: auto;
+    min-height: 200px;
   }
 
   .card-face {
-    padding: 1rem 0.5rem;
-    font-size: 0.95rem;
+    padding: 1rem;
+    font-size: 1rem;
+    height: auto;
+    min-height: 200px;
+    word-wrap: break-word;
   }
 
   .modal-content {
     padding: 1.5rem;
     width: 90%;
+    font-size: 1rem;
   }
 
   button {
     width: 100%;
     font-size: 1rem;
     margin: 0.5rem 0;
+    box-sizing: border-box;
+  }
+
+  .button-group {
+    flex-direction: column;
+    gap: 0.5rem;
   }
 
   .player-item {
-    font-size: 0.9rem;
-    padding: 0.6rem;
+    font-size: 0.95rem;
+    padding: 0.6rem 1rem;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   #playerList {
-    max-width: 90%;
+    max-width: 100%;
+    padding: 0;
   }
 }
 
