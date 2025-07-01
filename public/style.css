@@ -159,3 +159,53 @@ body {
   max-width: 300px;
   margin: 1rem auto;
 }
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 1rem 0;
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 1rem;
+    font-size: 16px;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  .card-container {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    margin: 1rem auto;
+  }
+
+  .card-face {
+    padding: 1rem 0.5rem;
+    font-size: 0.95rem;
+  }
+
+  .modal-content {
+    padding: 1.5rem;
+    width: 90%;
+  }
+
+  button {
+    width: 100%;
+    font-size: 1rem;
+    margin: 0.5rem 0;
+  }
+
+  .player-item {
+    font-size: 0.9rem;
+    padding: 0.6rem;
+  }
+
+  #playerList {
+    max-width: 90%;
+  }
+}

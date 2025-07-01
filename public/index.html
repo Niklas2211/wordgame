@@ -1,9 +1,8 @@
 <!doctype html>
 <html lang="de">
-  <link rel="stylesheet" href="style.css" />
-
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Wordgame Lobby</title>
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -16,6 +15,7 @@
         <button onclick="submitNickname()">Los geht's!</button>
       </div>
     </div>
+
     <h1>Wordgame</h1>
     <p>Player in Lobby: <span id="playerCount">0</span></p>
     <ul id="playerList"></ul>
@@ -33,8 +33,11 @@
         </div>
       </div>
     </div>
-    <button class="ready-btn" onclick="readyUp()">✅ Ready!</button>
-    <button class="restart-btn" onclick="restartGame()">🔄 Lobby reset</button>
+
+    <div class="button-group">
+      <button class="ready-btn" onclick="readyUp()">✅ Ready!</button>
+      <button class="restart-btn" onclick="restartGame()">🔄 Lobby reset</button>
+    </div>
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="script.js"></script>
