@@ -6,7 +6,7 @@ button {
   font-size: 1rem;
   font-weight: 600;
   border: none;
-  border-radius: 10px;
+  border-radius: 15px;
   cursor: pointer;
   transition:
     transform 0.1s ease,
@@ -129,15 +129,22 @@ body {
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .modal-content {
-  background: #ff8800;
+  background: rgba(255, 136, 0, 0.25);
   padding: 2rem;
   border-radius: 12px;
   text-align: center;
   max-width: 320px;
   width: 80%;
+  box-shadow: 0 8px 32px rgba(255, 136, 0, 0.4);
+  border: 1px solid rgba(255, 136, 0, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: white;
 }
 
 .modal-content input {
@@ -248,4 +255,76 @@ body {
 
 html {
   touch-action: manipulation;
+}
+/* Basis Glas-Button für Modal und Button-Gruppe */
+.modal-content button,
+.button-group button {
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 15px;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    transform 0.1s ease,
+    box-shadow 0.3s ease;
+  -webkit-tap-highlight-color: transparent;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  color: white;
+}
+
+/* Hover & Active */
+.modal-content button:hover,
+.button-group button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+.modal-content button:active,
+.button-group button:active {
+  transform: scale(0.95);
+}
+
+/* Neutraler Modal Button (z.B. Nickname Submit) */
+.modal-content button {
+  background: rgba(255 255 255 / 0.15);
+  border: 1px solid rgba(255 255 255 / 0.3);
+  box-shadow: 0 4px 12px rgba(255 255 255 / 0.2);
+}
+
+.modal-content button:hover {
+  background: rgba(255 255 255 / 0.3);
+  box-shadow: 0 6px 20px rgba(255 255 255 / 0.3);
+}
+
+/* Ready-Button: modernes Grün mit Glas-Effekt */
+.ready-btn {
+  background: rgba(76, 175, 80, 0.6); /* kräftig grün mit Transparenz */
+  border: 1px solid rgba(76, 175, 80, 0.8);
+  box-shadow: 0 6px 20px rgba(76, 175, 80, 0.6);
+  color: white;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.ready-btn:hover {
+  background: rgba(76, 175, 80, 0.8);
+  box-shadow: 0 10px 30px rgba(76, 175, 80, 0.8);
+}
+
+/* Restart-Button: modernes Rot mit Glas-Effekt */
+.restart-btn {
+  background: rgba(244, 67, 54, 0.6); /* kräftig rot mit Transparenz */
+  border: 1px solid rgba(244, 67, 54, 0.8);
+  box-shadow: 0 6px 20px rgba(244, 67, 54, 0.6);
+  color: white;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.restart-btn:hover {
+  background: rgba(244, 67, 54, 0.8);
+  box-shadow: 0 10px 30px rgba(244, 67, 54, 0.8);
 }
