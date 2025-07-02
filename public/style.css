@@ -1,4 +1,40 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #0d0d0d, #1a1a2e);
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
+  overflow: hidden;
+}
 
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(circle at 30% 30%, rgba(0, 255, 255, 0.05), transparent),
+              radial-gradient(circle at 70% 70%, rgba(255, 0, 255, 0.04), transparent);
+  animation: drift 20s linear infinite;
+  z-index: -2;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: url('https://www.transparenttextures.com/patterns/dark-mosaic.png');
+  opacity: 0.05;
+  z-index: -1;
+}
+
+@keyframes drift {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(10px, -10px); }
+  100% { transform: translate(0, 0); }
+}
 
 button {
   padding: 12px 24px;
@@ -45,19 +81,19 @@ button:active {
   padding: 1rem;
   width: 100%;
   max-width: 320px;
-  height: 220px;       /* feste Höhe */
+  height: 220px;       
   margin: 2rem auto 3rem auto;
   perspective: 1500px;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: visible;    /* wichtig, um Verschiebungen zu verhindern */
+  overflow: visible;    
 }
 
 .card {
   width: 100%;
-  height: 220px;       /* gleiche Höhe wie Container */
+  height: 220px;      
   position: relative;
   transform-style: preserve-3d;
   transition: transform 0.8s ease;
@@ -72,7 +108,7 @@ button:active {
 .card-face {
   position: absolute;
   width: 100%;
-  height: 220px;       /* gleiche Höhe */
+  height: 220px;      
   border-radius: 1rem;
   background: linear-gradient(135deg, #f0f4ff, #d9e2f3);
   backface-visibility: hidden;
@@ -256,7 +292,6 @@ body {
 html {
   touch-action: manipulation;
 }
-/* Basis Glas-Button für Modal und Button-Gruppe */
 .modal-content button,
 .button-group button {
   padding: 12px 24px;
@@ -276,7 +311,6 @@ html {
   color: white;
 }
 
-/* Hover & Active */
 .modal-content button:hover,
 .button-group button:hover {
   transform: scale(1.05);
@@ -287,7 +321,6 @@ html {
   transform: scale(0.95);
 }
 
-/* Neutraler Modal Button (z.B. Nickname Submit) */
 .modal-content button {
   background: rgba(255 255 255 / 0.15);
   border: 1px solid rgba(255 255 255 / 0.3);
@@ -299,9 +332,9 @@ html {
   box-shadow: 0 6px 20px rgba(255 255 255 / 0.3);
 }
 
-/* Ready-Button: modernes Grün mit Glas-Effekt */
+
 .ready-btn {
-  background: rgba(76, 175, 80, 0.6); /* kräftig grün mit Transparenz */
+  background: rgba(76, 175, 80, 0.6);
   border: 1px solid rgba(76, 175, 80, 0.8);
   box-shadow: 0 6px 20px rgba(76, 175, 80, 0.6);
   color: white;
@@ -314,9 +347,8 @@ html {
   box-shadow: 0 10px 30px rgba(76, 175, 80, 0.8);
 }
 
-/* Restart-Button: modernes Rot mit Glas-Effekt */
 .restart-btn {
-  background: rgba(244, 67, 54, 0.6); /* kräftig rot mit Transparenz */
+  background: rgba(244, 67, 54, 0.6);
   border: 1px solid rgba(244, 67, 54, 0.8);
   box-shadow: 0 6px 20px rgba(244, 67, 54, 0.6);
   color: white;
