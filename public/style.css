@@ -4,7 +4,7 @@ body {
   background: linear-gradient(135deg, #0d0d0d, #1a1a2e);
   color: white;
   font-family: 'Segoe UI', sans-serif;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 body::before {
