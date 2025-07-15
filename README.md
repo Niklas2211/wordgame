@@ -6,9 +6,9 @@ A real-time multiplayer party game inspired by "Spyfall" or "Who's is the Spy?" 
 
 ## Features
 
-- Real-time multiplayer with Socket.io
+- Real-time game state sync with Socket.io events
 - Lobby system with player readiness status
-- Flip card interface to reveal or hide secret word/hint
+- Flip card animation via CSS transitions
 - modern dark-blue theme with centered layout
 - mobile-friendly and responsive design
 
@@ -16,19 +16,24 @@ A real-time multiplayer party game inspired by "Spyfall" or "Who's is the Spy?" 
 
 ## Installation
 
-```bash
+
 
 1. **Clone the repository**
+
+```bash
 
   git clone https://github.com/Niklas2211/wordgame.git
   cd wordgame
   npm install
   node server/index.js
 
+```
+
   Open your browser at http://localhost:3000
 
 2. **Project Structure**
 
+```bash
   .
   ├── public/
   │   ├── index.html
@@ -38,6 +43,7 @@ A real-time multiplayer party game inspired by "Spyfall" or "Who's is the Spy?" 
   ├── gamemanager.js
   ├── index.js
   └── README.md
+```
 
 3. **Deployment**
 
@@ -46,7 +52,7 @@ A real-time multiplayer party game inspired by "Spyfall" or "Who's is the Spy?" 
   - Use the environment port (process.env.PORT)
   - Everything (client + server) runs in a single deployment
 
-```
+
 
 ## How to play
 
